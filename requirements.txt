@@ -1,4 +1,4 @@
-kivymd
-kivy
+kivy==2.2.0dev0
 Pillow
 kaki
+kivymd
