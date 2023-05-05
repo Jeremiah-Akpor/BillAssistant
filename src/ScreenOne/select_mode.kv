@@ -1,3 +1,4 @@
+#: import MDTopAppBar kivymd.uix.toolbar.MDTopAppBar
 <SelectMode>:
     md_bg_color: [1,1,1,1]
     MDBoxLayout:
@@ -9,14 +10,60 @@
             pos_hint: {'center_x': 0.5,'center_y': 0.8}
             halign: "center"
             color: rgba(34,34,34,255)
+            size_hint: 1,0.3
+            
         Image:
             source: "images/icon.jpeg"
             size_hint: .8,.8
             pos_hint: {'center_x': 0.5,'center_y': 0.65}
+        
+        
         MDLabel:
             text: "Spercial Money Notes Calculator"
-            font_name: "Roboto-Regular"
-            font_size: "23sp"
-            pos_hint: {'center_y': 0.38}
+            font_style: "H6"
             halign: "center"
-            color: rgba(34,34,34,255)
+            size_hint: 1,0.4
+        MDRectangleFlatButton:
+            text: "Mode"
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            on_press: app.sm.current = 'ModeCard'
+        Widget:
+            size_hint_y: None
+            height: 180
+
+
+<ModeCard>
+    md_bg_color: [1,1,1,1]
+    MDCard:
+        orientation: "vertical"
+        padding: "16dp"
+        spacing: "8dp"
+        size_hint: None,None
+        size: "280dp","320dp"
+        elevation:10
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+        MDLabel:
+            text: "Select Mode"
+            font_style: "H6"
+            halign: "center"
+            size_hint: 1,0.4
+
+        MDRectangleFlatButton:
+            text: "Bill Mode"
+            halign: "center"
+            on_release: app.sm.current = 'BillMode'
+            size_hint: 1,0.3
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+        MDRectangleFlatButton:
+            text: "Calculator Mode"
+            halign: "center"
+            on_release: app.sm.current = 'Calculator'
+            size_hint: 1,0.3
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        MDIconButton:
+            icon: "arrow-left"
+            on_release: app.sm.current = 'SelectMode'
+            size_hint: 1,0.3
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}

@@ -6,6 +6,7 @@ Calculator mode or Bill mode.
 from kivymd.uix.screen import MDScreen
 from apputils import load_kv
 
+
 load_kv(__name__)
 
 
@@ -18,4 +19,8 @@ class SelectMode(MDScreen):
     -------
     None
     """
+    pass
+
+
+class ModeCard(MDScreen):
     pass
