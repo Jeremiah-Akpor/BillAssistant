@@ -6,5 +6,6 @@
   "cSpell.words": [
     "apputils",
     "screenmanager"
-  ]
+  ],
+  "materialkv.pythonFile": "main.py"
 }
