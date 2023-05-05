@@ -12,6 +12,8 @@ class MainApp(MDApp):
     def build(self):
         self.sm = SM()
         self.sm.current = 'SelectMode'
+        self.title = "BillBuddy"
+        self.icon = "images/icon.jpeg"
         return self.sm
 
 

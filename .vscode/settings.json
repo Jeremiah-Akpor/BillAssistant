@@ -1,10 +1,11 @@
 {
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "ms-python.python"
   },
   "python.formatting.provider": "none",
   "cSpell.words": [
     "apputils",
+    "kivymd",
     "screenmanager"
   ],
   "materialkv.pythonFile": "main.py"
