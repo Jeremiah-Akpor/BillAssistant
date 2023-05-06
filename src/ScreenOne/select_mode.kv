@@ -1,50 +1,99 @@
-#: import MDTopAppBar kivymd.uix.toolbar.MDTopAppBar
+# Inheritance
+# This makes all label and iconbuttons to change color depending
+# on the them
+<CustomLabel@MDLabel>:
+    theme_text_color: "Custom"
+    text_color: [1,0.5,0,1] if app.theme_cls.theme_style == 'Dark' else [0,0,0,1]
+
+<CustomIconButton@MDIconButton>:
+    theme_text_color: "Custom"
+    text_color: [1,0.5,0,1] if app.theme_cls.theme_style == 'Dark' else [0,0,0,1]
+
+# this is the select mode screen
 <SelectMode>:
-    md_bg_color: [1,1,1,1]
+    md_bg_color: [0,0,0,1] if app.theme_cls.theme_style == 'Dark' else [1,1,1,1]
+
     MDBoxLayout:
         orientation: 'vertical'
-        MDLabel:
+        CustomIconButton:
+            icon: "theme-light-dark"
+            pos_hint: {'top': 1, 'right': 1}
+            size_hint: None, None
+            size: dp(48), dp(48)
+            # changes the theme style of the app
+            on_press: app.toggle_theme(True) if app.theme_cls.theme_style == 'Light' else app.toggle_theme(False)
+
+        CustomLabel:
             text: "Welcome to BillBuddy"
             font_name: "Roboto-BoldItalic"
             font_size: "40sp"
             pos_hint: {'center_x': 0.5,'center_y': 0.8}
             halign: "center"
-            color: rgba(34,34,34,255)
             size_hint: 1,0.3
-            
-        Image:
-            source: "images/icon.jpeg"
-            size_hint: .8,.8
-            pos_hint: {'center_x': 0.5,'center_y': 0.65}
-        
-        
-        MDLabel:
+
+        MDCard:
+            size_hint: None, None
+            size: dp(200), dp(200)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+            elevation: 3
+            radius: dp(180)/2
+            #padding: dp(4)
+            md_bg_color: [1,1,1,1]
+            canvas.before:
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [dp(130)/2]
+            FitImage:
+                source: "images/icon.jpeg"
+                size: self.parent.size
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                allow_stretch: True
+                keep_ratio: True
+                radius: dp(130)/2
+
+        CustomLabel:
             text: "Spercial Money Notes Calculator"
             font_style: "H6"
             halign: "center"
             size_hint: 1,0.4
-        MDRectangleFlatButton:
+
+        MDRaisedButton:
             text: "Mode"
             pos_hint: {'center_x': 0.5,'center_y': 0.5}
-            on_press: app.sm.current = 'ModeCard'
+            on_press: app.sm.transition.direction = 'left'; app.sm.current = 'ModeCard'
+
+        # this is to make the buttons move up a little bit
         Widget:
             size_hint_y: None
             height: 180
 
 
+
 <ModeCard>
-    md_bg_color: [1,1,1,1]
+    md_bg_color:  [0,0,0,1] if app.theme_cls.theme_style == 'Dark' else [1,1,1,1]
+    CustomIconButton:
+        icon: "theme-light-dark"
+        pos_hint: {'top': 1, 'right': 1}
+        size_hint: None, None
+        size: dp(48), dp(48)
+        # changes the theme style of the app
+        on_press: app.toggle_theme(True) if app.theme_cls.theme_style == 'Light' else app.toggle_theme(False)
+
     MDCard:
         orientation: "vertical"
         padding: "16dp"
         spacing: "8dp"
         size_hint: None,None
         size: "280dp","320dp"
-        elevation:10
+        elevation:5
         pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        md_bg_color:  [0,0,0,1]if app.theme_cls.theme_style == 'Dark' else [1,1,1,1]
 
-        MDLabel:
+        CustomLabel:
             text: "Select Mode"
+            theme_text_color: "Custom"
+            text_color: [1,0.5,0,1] if app.theme_cls.theme_style == 'Dark' else [0,0,0,1]
             font_style: "H6"
             halign: "center"
             size_hint: 1,0.4
@@ -62,8 +111,9 @@
             on_release: app.sm.current = 'Calculator'
             size_hint: 1,0.3
             pos_hint: {'center_x': 0.5,'center_y': 0.5}
-        MDIconButton:
+
+        CustomIconButton:
             icon: "arrow-left"
-            on_release: app.sm.current = 'SelectMode'
+            on_release: app.sm.transition.direction = 'right'; app.sm.current = 'SelectMode'
             size_hint: 1,0.3
             pos_hint: {'center_x': 0.5,'center_y': 0.5}
