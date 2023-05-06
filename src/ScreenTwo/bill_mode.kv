@@ -1,0 +1,17 @@
+# Inheritance
+# This makes all label and iconbuttons to change color depending
+# on the them
+<CustomLabel@MDLabel>:
+    theme_text_color: "Custom"
+    text_color: [1,0.5,0,1] if app.theme_cls.theme_style == 'Dark' else [0,0,0,1]
+
+<CustomIconButton@MDIconButton>:
+    theme_text_color: "Custom"
+    text_color: [1,0.5,0,1] if app.theme_cls.theme_style == 'Dark' else [0,0,0,1]
+
+# this it the Bill mode screen
+<BillMode>:
+    MDBoxLayout:
+        orientation: "vertical"
+        MDBoxLayout:
+            orientation: "horizontal"
