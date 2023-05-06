@@ -11,7 +11,14 @@
 
 # this it the Bill mode screen
 <BillMode>:
+    md_bg_color: [0,0,0,1] if app.theme_cls.theme_style == 'Dark' else [1,1,1,1]
     MDBoxLayout:
-        orientation: "vertical"
+        orientation: 'vertical'
         MDBoxLayout:
-            orientation: "horizontal"
+            orientation: 'horizontal'
+            CustomIconButton:
+                icon: "arrow-left"
+                on_release: app.sm.transition.direction = 'right'; app.sm.current = 'SelectMode'
+                size_hint: 1,0.3
+                pos_hint: {'top': 1, 'left': 1}
+    
