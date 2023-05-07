@@ -19,8 +19,5 @@ class SelectMode(MDScreen):
     -------
     None
     """
-    pass
 
-
-class ModeCard(MDScreen):
     pass

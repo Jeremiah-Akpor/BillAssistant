@@ -2,7 +2,7 @@
 Bill mode screen that allows users to input values and calculate the total
 value of money notes.
 
-The class inherits from `MDScreen`, which is a KivyMD class for a full-screen 
+The class inherits from `MDScreen`, which is a KivyMD class for a full-screen
 layout widget.
 
 Attributes:
@@ -15,10 +15,17 @@ None
 """
 
 
+from kivymd.uix.behaviors import CommonElevationBehavior
+from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.screen import MDScreen
+
 from apputils import load_kv
 
 load_kv(__name__)
+
+
+class NavBar(CommonElevationBehavior, MDFloatLayout):
+    pass
 
 
 class BillMode(MDScreen):

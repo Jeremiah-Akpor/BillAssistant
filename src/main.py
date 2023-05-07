@@ -22,12 +22,14 @@ class MainApp(MDApp):
             `SM`: The root `SM` object representing the app UI.
         """
         self.sm = SM()
-        self.sm.current = "SelectMode"
+        self.sm.current = "Welcome"
         self.title = "BillBuddy"
         self.icon = "images/icon.jpeg"
-        self.theme_cls.theme_style = "Light"
-        self.theme_cls.primary_palette = "Orange"
-        self.theme_cls.accent_palette = "Red"
+        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.primary_palette = "LightBlue"
+        self.theme_cls.accent_palette = "BlueGray"
+        self.theme_cls.theme_style_switch_animation = True
+        self.theme_cls.theme_style_switch_animation_duration = 0.95
         return self.sm
 
     def toggle_theme(self, is_dark):
