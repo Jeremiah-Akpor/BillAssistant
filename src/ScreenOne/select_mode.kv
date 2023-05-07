@@ -1,69 +1,84 @@
-# Inheritance
-# This makes all label and iconbuttons to change color depending
-# on the them
 <ElementCard@MDCard>:
-    md_bg_color:69/255,55/255,86/255,1
-    padding:dp(15)
+    md_bg_color:[22/255,26/255,31/255,1]
+    orientation: "vertical"
+    padding:dp(16)
     spacing:dp(15)
     radius:dp(25)
     ripple_behavior: True
-    image:''
-    text:""
-    items_count:""
-    subtext:''
+    size_hint: .3,.2
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+    size: dp(350), dp(350)
 
 # this is the select mode screen
+# this is the select mode screen
 <SelectMode>
-    md_bg_color: [35/255,43/255,50/255,1] if app.theme_cls.theme_style == 'Dark' else [181/255, 209/255, 255/255]
-    MDIconButton:
-        icon: "theme-light-dark"
-        pos_hint: {'top': 1, 'right': 1}
-        size_hint: None, None
-        size: dp(48), dp(48)
-        # changes the theme style of the app
-        on_press: app.toggle_theme(True) if app.theme_cls.theme_style == 'Light' else app.toggle_theme(False)
-        theme_text_color: "Custom"
-        text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
+    md_bg_color: [35/255, 43/255, 50/255, 1] if app.theme_cls.theme_style == 'Dark' else [181/255, 209/255, 255/255]
 
-    MDCard:
-        orientation: "vertical"
-        padding: "16dp"
-        spacing: "8dp"
-        size_hint: None,None
-        size: "280dp","320dp"
-        elevation:5
-        pos_hint: {'center_x': 0.5,'center_y': 0.5}
-        md_bg_color:  [22/255,26/255,31/255,1]if app.theme_cls.theme_style == 'Dark' else [1,1,1,1]
-        size: dp(350), dp(350)
-
-        MDLabel:
-            text: "Select Mode"
-            theme_text_color: "Custom"
-            text_color: [1,0.5,0,1] if app.theme_cls.theme_style == 'Dark' else [0,0,0,1]
-            font_style: "H6"
-            halign: "center"
-            size_hint: 1,0.4
-            theme_text_color: "Custom"
-            text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
-
-        MDRectangleFlatButton:
-            text: "Bill Mode"
-            halign: "center"
-            on_release: app.sm.current = 'BillMode'
-            size_hint: 1,0.3
-            pos_hint: {'center_x': 0.5,'center_y': 0.5}
-
-        MDRectangleFlatButton:
-            text: "Calculator Mode"
-            halign: "center"
-            on_release: app.sm.current = 'Calculator'
-            size_hint: 1,0.3
-            pos_hint: {'center_x': 0.5,'center_y': 0.5}
-
+    MDBoxLayout:
+        orientation: 'vertical'
+        spacing: 8
         MDIconButton:
-            icon: "arrow-left"
-            on_release: app.sm.transition.direction = 'right'; app.sm.current = 'Welcome'
-            size_hint: 1,0.3
-            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+            icon: "theme-light-dark"
+            pos_hint: {'top': 1, 'right': 1}
+            size_hint: None, None
+            size: dp(48), dp(48)
+            # changes the theme style of the app
+            on_press: app.toggle_theme(True) if app.theme_cls.theme_style == 'Light' else app.toggle_theme(False)
             theme_text_color: "Custom"
-            text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
+            text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255, 26/255, 31/255, 1]
+        MDLabel:
+            text: "Select the mode you want"
+            font_name: "Roboto-BoldItalic"
+            font_size: "40sp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            halign: "center"
+            size_hint: 1, 0.3
+            theme_text_color: "Custom"
+            text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255, 26/255, 31/255, 1]
+        ElementCard:
+            on_release: 
+                app.sm.transition.direction = 'left'
+                app.sm.current = 'BillMode'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+            size_hint: .5,.2
+            Image:
+                source: "images/euro_re.png"
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                radius: dp(130)/2
+            MDLabel:
+                text: "Bill Mode"
+                font_style: "H6"
+                halign: "center"    
+                size_hint: 1,0.4
+                theme_text_color: "Custom"
+                text_color: [181/255, 209/255, 255/255]
+           
+
+        ElementCard:
+            on_release: 
+                app.sm.transition.direction = 'left'
+                app.sm.current = 'Calculator'
+            size_hint: .5,.2
+            Image:
+                source: "images/calc_trans_re.png"
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                radius: dp(130)/2
+            MDLabel:
+                text: "Calculator"
+                font_style: "H6"
+                halign: "center"    
+                size_hint: 1,0.4
+                theme_text_color: "Custom"
+                text_color: [181/255, 209/255, 255/255]
+        # =====
+        # MDIconButton:
+        #     icon: 'arrow-left'
+        #     on_release: app.sm.transition.direction = 'right'; app.sm.current = 'Welcome'
+        #     size_hint: 1,0.3
+        #     pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        #     theme_text_color: 'Custom'
+        #     text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
+        # =====
+        Widget:
+            size_hint_y: None
+            height: 180
