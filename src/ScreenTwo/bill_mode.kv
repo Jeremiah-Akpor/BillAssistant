@@ -1,4 +1,25 @@
 
+<CustomLabel@MDLabel>
+    text: ""
+    font_name: "Roboto-Regular"
+    pos_hint: {'center_x': 0.5,'center_y': 0.8}
+    halign: "center"
+    size_hint: 1,0.3
+    theme_text_color: "Custom"
+    text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
+<CustomTextField@MDTextField>
+    hint_text: ""
+    helper_text: ""
+    helper_text_mode: "on_focus"
+    icon_right: "cash"
+    icon_right_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
+    #pos_hint:{'center_x': 0.5,'center_y': 0.5}
+    size_hint: 1,1
+    width:300
+    halign: "right"
+    input_filter: 'int'
+    
+
 # this it the Bill mode screen
 <BillMode>:
     md_bg_color: [35/255,43/255,50/255,1] if app.theme_cls.theme_style == 'Dark' else [181/255, 209/255, 255/255]
@@ -65,4 +86,69 @@
             size_hint: 1,0.3
             theme_text_color: "Custom"
             text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
+        MDGridLayout:
+            cols: 3
+            size_hint_x: 1
+            CustomLabel:
+                text: "Money Notes"
+            CustomLabel:
+                text: "Numbers of Notes"
+            CustomLabel:
+                text: "Total"
+            CustomLabel:
+                text: "500"
+            CustomTextField:
+                id: five_hundred_euro_Note
+                hint_text: "enter number of 500 Euro notes"
+                on_text:
+                    app.calculate(five_hundred_euro_Note_total, 500, five_hundred_euro_Note)
+                on_text_validate:
+                    app.focus_next(two_hundred_euro_Note)
 
+            CustomLabel:
+                id: five_hundred_euro_Note_total
+                text: "0"
+            CustomLabel:
+                text: "200"
+            CustomTextField:
+                id: two_hundred_euro_Note
+                hint_text: "enter number of 200 Euro notes"
+            CustomLabel:
+                text: "0"
+            CustomLabel:
+                text: "100"
+            CustomTextField:
+                id: one_hundred_euro_Note
+                hint_text: "enter number of 100 Euro notes"
+            CustomLabel:
+                text: "0"
+            CustomLabel:
+                text: "50"
+            CustomTextField:
+                id: fifty_hundred_euro_Note
+                hint_text: "enter number of 50 Euro notes"
+            CustomLabel:
+                text: "0"
+            CustomLabel:
+                text: "20"
+            CustomTextField:
+                id: twenty_hundred_euro_Note
+                hint_text: "enter number of 20 Euro notes"
+            CustomLabel:
+                text: "0"
+            CustomLabel:
+                text: "10"
+            CustomTextField:
+                id: ten_euro_Note
+                hint_text: "enter number of 10 Euro notes"
+            CustomLabel:
+                text: "0"
+            CustomLabel:
+                text: "5"
+            CustomTextField:
+                id: five_euro_Note
+                hint_text: "enter number of 5 Euro notes"
+            CustomLabel:
+                text: "0"
+        MDGridLayout:
+            cols: 3
