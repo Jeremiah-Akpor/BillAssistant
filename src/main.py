@@ -1,7 +1,6 @@
 """
 This module contains the `SM` and `MainApp` classes for the BillBuddy app.
 """
-import re
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.textfield import MDTextField
 from kivymd.app import MDApp
@@ -23,11 +22,11 @@ class MainApp(MDApp):
             `SM`: The root `SM` object representing the app UI.
         """
         self.sm = SM()
-        self.sm.current = "BillMode"
+        self.sm.current = "Welcome"
         self.title = "BillBuddy"
         self.icon = "images/icon.jpeg"
         self.theme_cls.theme_style = "Dark"
-        self.theme_cls.primary_palette = "LightBlue"
+        self.theme_cls.primary_palette = "DeepOrange"
         self.theme_cls.accent_palette = "BlueGray"
         self.theme_cls.theme_style_switch_animation = True
         self.theme_cls.theme_style_switch_animation_duration = 0.95
@@ -49,10 +48,17 @@ class MainApp(MDApp):
         except ValueError:
             # Handle the case where money_note or amount
             # cannot be converted to integers
-            total_id.text = "Invalid input"
+            if amount.text == "":
+                total_id.text = "0"
+            else:
+                total_id.text = "Invalid input"
 
     def focus_next(self, textfield_id):
         textfield_id.focus = True
+
+    def total_sum(self, notes: list, total_label_id):
+        total = sum(int(textfield.text) for textfield in notes)
+        total_label_id.text = str(total)
 
 
 if __name__ == "__main__":
