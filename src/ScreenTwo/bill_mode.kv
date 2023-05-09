@@ -22,7 +22,7 @@
     md_bg_color: [35/255,43/255,50/255,1] if app.theme_cls.theme_style == 'Dark' else [181/255, 209/255, 255/255]
     MDFloatLayout:
         NavBar:
-            size_hint: .85, .1
+            size_hint: .7, None
             pos_hint: {'center_x': .5, 'center_y':.1 }
             elevation: 1
             radius:[16]
@@ -87,14 +87,14 @@
             CustomLabel:
                 text: "Money Notes"
             CustomLabel:
-                text: "Numbers of Notes"
+                text: "Numbers of "
             CustomLabel:
                 text: "Sub Total"
             CustomLabel:
                 text: "500"
             CustomTextField:
                 id: five_hundred_euro_Note
-                hint_text: "number of 500€ notes"
+                hint_text: "500€ notes"
                 on_text:
                     app.calculate(five_hundred_euro_Note_total, 500, five_hundred_euro_Note)
                     app.total_sum([five_hundred_euro_Note_total,two_hundred_euro_Note_total,one_hundred_euro_Note_total,fifty_euro_Note_total,twenty_euro_Note_total,ten_euro_Note_total,five_euro_Note_total], total)
@@ -109,7 +109,7 @@
                 text: "200"
             CustomTextField:
                 id: two_hundred_euro_Note
-                hint_text: "number of 200€ notes"
+                hint_text: "200€ notes"
                 on_text:
                     app.calculate(two_hundred_euro_Note_total, 200, two_hundred_euro_Note)
                     app.total_sum([five_hundred_euro_Note_total,two_hundred_euro_Note_total,one_hundred_euro_Note_total,fifty_euro_Note_total,twenty_euro_Note_total,ten_euro_Note_total,five_euro_Note_total], total)
@@ -122,7 +122,7 @@
                 text: "100"
             CustomTextField:
                 id: one_hundred_euro_Note
-                hint_text: "number of 100€ notes"
+                hint_text: "100€ notes"
                 on_text:
                     app.calculate(one_hundred_euro_Note_total, 100, one_hundred_euro_Note)
                     app.total_sum([five_hundred_euro_Note_total,two_hundred_euro_Note_total,one_hundred_euro_Note_total,fifty_euro_Note_total,twenty_euro_Note_total,ten_euro_Note_total,five_euro_Note_total], total)
@@ -135,7 +135,7 @@
                 text: "50"
             CustomTextField:
                 id: fifty_euro_Note
-                hint_text: "number of 50€ notes"
+                hint_text: "50€ notes"
                 on_text:
                     app.calculate(fifty_euro_Note_total, 50, fifty_euro_Note)
                     app.total_sum([five_hundred_euro_Note_total,two_hundred_euro_Note_total,one_hundred_euro_Note_total,fifty_euro_Note_total,twenty_euro_Note_total,ten_euro_Note_total,five_euro_Note_total], total)
@@ -148,7 +148,7 @@
                 text: "20"
             CustomTextField:
                 id: twenty_euro_Note
-                hint_text: " number of 20€ notes"
+                hint_text: "20€ notes"
                 on_text:
                     app.calculate(twenty_euro_Note_total, 20, twenty_euro_Note)
                     app.total_sum([five_hundred_euro_Note_total,two_hundred_euro_Note_total,one_hundred_euro_Note_total,fifty_euro_Note_total,twenty_euro_Note_total,ten_euro_Note_total,five_euro_Note_total], total)
@@ -161,7 +161,7 @@
                 text: "10"
             CustomTextField:
                 id: ten_euro_Note
-                hint_text: "number of 10€ notes"
+                hint_text: "10€ notes"
                 on_text:
                     app.calculate(ten_euro_Note_total, 10, ten_euro_Note)
                     app.total_sum([five_hundred_euro_Note_total,two_hundred_euro_Note_total,one_hundred_euro_Note_total,fifty_euro_Note_total,twenty_euro_Note_total,ten_euro_Note_total,five_euro_Note_total], total)
@@ -174,7 +174,7 @@
                 text: "5"
             CustomTextField:
                 id: five_euro_Note
-                hint_text: "number of 5€ notes"
+                hint_text: "5€ notes"
                 on_text:
                     app.calculate(five_euro_Note_total, 5, five_euro_Note)
                     app.total_sum([five_hundred_euro_Note_total,two_hundred_euro_Note_total,one_hundred_euro_Note_total,fifty_euro_Note_total,twenty_euro_Note_total,ten_euro_Note_total,five_euro_Note_total], total)
@@ -183,10 +183,10 @@
             CustomLabel:
                 id: five_euro_Note_total
                 text: "0"
-        Widget:
-            height: dp(10)
+        MDLabel:
+            text: ""
         MDGridLayout:
-            cols: 3
+            cols: 2
             #size_hint:1,1
             pos_hint: {'center_x': .5, 'center_y': .6}
             MDLabel:
@@ -208,15 +208,15 @@
                 size_hint: 1,0.3
                 theme_text_color: "Custom"
                 text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
-            MDRoundFlatButton:
-                text: "Clear All"
-                md_bg_color: [22/255,26/255,31/255,1] 
-                theme_text_color: "Custom"
-                text_color: [181/255, 209/255, 255/255] 
-                size_hint: .8,.25
-                pos_hint: {'center_x': 0.5,'center_y': 0.5}
-                on_release:
-                    app.clear_all([five_hundred_euro_Note,two_hundred_euro_Note,one_hundred_euro_Note,fifty_euro_Note,twenty_euro_Note,ten_euro_Note,five_euro_Note])
-        Widget:
-            height: dp(10)
+        MDRaisedButton:
+            text: "Clear All"
+            pos_hint: {'center_x': 0.5,'center_y': 1}
+            md_bg_color: [22/255,26/255,31/255,1] 
+            theme_text_color: "Custom"
+            text_color: [181/255, 209/255, 255/255] 
+            size_hint: 0.5,None
+            on_release:
+                app.clear_all([five_hundred_euro_Note,two_hundred_euro_Note,one_hundred_euro_Note,fifty_euro_Note,twenty_euro_Note,ten_euro_Note,five_euro_Note])
+        MDLabel:
+            text: ""
             
