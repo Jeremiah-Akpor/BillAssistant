@@ -60,6 +60,10 @@ class MainApp(MDApp):
         total = sum(int(textfield.text) for textfield in notes)
         total_label_id.text = str(total)
 
+    def clear_all(self, notes: list):
+        for note in notes:
+            note.text = ""
+
 
 if __name__ == "__main__":
     app = MainApp()

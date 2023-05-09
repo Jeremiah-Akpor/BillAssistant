@@ -16,7 +16,6 @@
     halign: "right"
     input_filter: 'int'
     input_type: "number"
-    text_color: [1, 0, 0, 1]
 
 # this it the Bill mode screen
 <BillMode>:
@@ -39,7 +38,6 @@
                 MDIconButton:
                     id: bill_mode_button
                     icon: "currency-eur"
-                    ripple_scale: 0
                     user_font_size: "40sp"
                     size_hint: 1,1
                     #width: dp(48)  # set a fixed width of 48dp
@@ -52,7 +50,6 @@
                 MDIconButton:
                     id: calculator_mode_button
                     icon: "calculator"
-                    ripple_scale: 0
                     user_font_size: "40sp"
                     size_hint: 1,1
                     width: dp(48)  # set a fixed width of 48dp
@@ -189,8 +186,8 @@
         Widget:
             height: dp(10)
         MDGridLayout:
-            cols: 2
-            size_hint:1,1
+            cols: 3
+            #size_hint:1,1
             pos_hint: {'center_x': .5, 'center_y': .6}
             MDLabel:
                 text: "Total"
@@ -211,6 +208,15 @@
                 size_hint: 1,0.3
                 theme_text_color: "Custom"
                 text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
+            MDRoundFlatButton:
+                text: "Clear All"
+                md_bg_color: [22/255,26/255,31/255,1] 
+                theme_text_color: "Custom"
+                text_color: [181/255, 209/255, 255/255] 
+                size_hint: .8,.25
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                on_release:
+                    app.clear_all([five_hundred_euro_Note,two_hundred_euro_Note,one_hundred_euro_Note,fifty_euro_Note,twenty_euro_Note,ten_euro_Note,five_euro_Note])
         Widget:
             height: dp(10)
             
