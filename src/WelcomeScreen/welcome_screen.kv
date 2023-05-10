@@ -1,9 +1,10 @@
 <Welcome>:
+    name: "Welcome"
     md_bg_color: [35/255,43/255,50/255,1] if app.theme_cls.theme_style == 'Dark' else [181/255, 209/255, 255/255]
 
     MDBoxLayout:
         orientation: 'vertical'
-        spacing: 8
+        spacing: 15
         MDIconButton:
             icon: "theme-light-dark"
             pos_hint: {'top': 1, 'right': 1}
@@ -25,7 +26,7 @@
             text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
         MDCard:
             size_hint: None, None
-            size: dp(350), dp(350)
+            size: dp(200), dp(200)
             pos_hint: {'center_x': 0.5, 'center_y': 0.6}
             elevation: 3
             radius: dp(180)/2
