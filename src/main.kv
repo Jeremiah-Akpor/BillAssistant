@@ -3,12 +3,48 @@
 #: import BillMode ScreenTwo.bill_mode
 #: import Calculator ScreenThree.calculator
 
+<Splash>:
+    MDFloatLayout:
+        md_bg_color: [35/255,43/255,50/255,1]
+        MDCard:
+            size_hint: None, None
+            size: dp(250), dp(250)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+            elevation: 3
+            radius: dp(180)/2
+            #padding: dp(4)
+            md_bg_color: [1,1,1,1]
+            canvas.before:
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [dp(130)/2]
+            FitImage:
+                source: "images/icon.jpeg"
+                size: self.parent.size
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                allow_stretch: True
+                keep_ratio: True
+                radius: dp(130)/2
+        MDLabel:
+            text: "BillBuddy"
+            font_name: "Roboto-BoldItalic"
+            font_size: "40sp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+            halign: "center"
+            size_hint: 1,0.3
+            theme_text_color: "Custom"
+            text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
+
 <SM>:
-    SelectMode:
-        name: 'SelectMode'
+    Splash:
+        name: 'Splash'
     Welcome:
         name: "Welcome"
+    SelectMode:
+        name: 'SelectMode'
     BillMode:
         name: 'BillMode'
     Calculator:
         name: 'Calculator'
+    

@@ -1,13 +1,20 @@
 """
 This module contains the `SM` and `MainApp` classes for the BillBuddy app.
 """
+from kivy.clock import Clock
+from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager
-from kivymd.uix.textfield import MDTextField
+from kivymd.uix.screen import MDScreen
 from kivymd.app import MDApp
+from kivymd.uix.textfield import MDTextField
 
 
 class SM(ScreenManager):
     """A `ScreenManager` that manages the screens for the BillBuddy app."""
+
+
+class Splash(MDScreen):
+    pass
 
 
 class MainApp(MDApp):
@@ -22,15 +29,22 @@ class MainApp(MDApp):
             `SM`: The root `SM` object representing the app UI.
         """
         self.sm = SM()
-        self.sm.current = "Welcome"
         self.title = "BillBuddy"
         self.icon = "images/icon.jpeg"
+        self.sm.current = "Splash"
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "DeepOrange"
         self.theme_cls.accent_palette = "BlueGray"
         self.theme_cls.theme_style_switch_animation = True
         self.theme_cls.theme_style_switch_animation_duration = 0.95
+        Window.size = (431, 988)
         return self.sm
+
+    def on_start(self):
+        Clock.schedule_once(self.welcome, 5)
+
+    def welcome(self, *args):  # pylint: disable=unused-argument
+        self.sm.current = "Welcome"
 
     def toggle_theme(self, is_dark):
         """Toggle the app's theme.
