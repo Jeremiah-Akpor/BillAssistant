@@ -2,9 +2,9 @@
 <CustomLabel@MDLabel>
     text: ""
     font_name: "Roboto-Regular"
-    #pos_hint: {'center_x': 0.5,'center_y': 0.8}
+    pos_hint: {'center_x': 0.5,'center_y': 0.8}
     halign: "center"
-    #size_hint: 1,0.3
+    size_hint: 1,0.3
     theme_text_color: "Custom"
     text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
 <CustomTextField@MDTextField>
@@ -20,44 +20,40 @@
 # this it the Bill mode screen
 <BillMode>:
     md_bg_color: [35/255,43/255,50/255,1] if app.theme_cls.theme_style == 'Dark' else [181/255, 209/255, 255/255]
-    BoxLayout:
+    MDBoxLayout:
         orientation: 'vertical'
-        MDFloatLayout:
+        #spacing: 8
+        
+        MDGridLayout:
+            cols: 3
             MDIconButton:
-                icon: 'chevron-left'
+                icon: 'arrow-left'
                 on_release: app.sm.transition.direction = 'right'; app.sm.current = 'SelectMode'
-                size_hint: .1,None
-                pos_hint: {'center_y': .8}
-                user_font_size: "35p"
+                size_hint: 1,0.3
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
                 theme_text_color: 'Custom'
                 text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
-            CustomLabel:
-                text: "Back"
-                font_size: "18sp"
-                size_hint: None,None
-                pos_hint: {'center_x': 0.15,'center_y': .8}
-
             MDLabel:
                 text: "Billmode"
                 font_name: "Roboto-BoldItalic"
                 font_size: "20sp"
-                pos_hint: {'center_x': 0.5, 'center_y': .8}
+                pos_hint: {'center_x': 0.5,'center_y': 0.8}
                 halign: "center"
                 size_hint: 1,0.3
                 theme_text_color: "Custom"
                 text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
             MDIconButton:
                 icon: "theme-light-dark"
-                pos_hint: {'center_y': .8, 'right': 1}
-                size_hint: None,None
+                pos_hint: {'top': 1, 'right': 1}
+                size_hint: 1,0.3
                 size: dp(48), dp(48)
                 # changes the theme style of the app
                 on_press: app.toggle_theme(True) if app.theme_cls.theme_style == 'Light' else app.toggle_theme(False)
                 theme_text_color: "Custom"
                 text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
-            
         MDGridLayout:
             cols: 3
+            size_hint_x: 1
             CustomLabel:
                 text: "Money Notes"
             CustomLabel:
@@ -191,46 +187,6 @@
             size_hint: 0.5,None
             on_release:
                 app.clear_all([five_hundred_euro_Note,two_hundred_euro_Note,one_hundred_euro_Note,fifty_euro_Note,twenty_euro_Note,ten_euro_Note,five_euro_Note])
-        
-        MDFloatLayout:
-            NavBar:
-                size_hint: .85, .5
-                size_hint: .7, None
-                pos_hint: {'center_x': .5, 'center_y':.1 }
-                elevation: 1
-                radius:[16]
-                md_bg_color: [22/255,26/255,31/255,1]
-                MDGridLayout:
-                    cols: 2
-                    size_hint:1,1
-                    pos_hint: {'center_x': .5, 'center_y': .5}
-                    md_bg_color: [22/255,26/255,31/255,1]
-                    radius:[16]
-                    
-                    MDIconButton:
-                        id: bill_mode_button
-                        icon: "currency-eur"
-                        user_font_size: "40sp"
-                        size_hint: 1,1
-                        #width: dp(48)  # set a fixed width of 48dp
-                        pos_hint: {'center_x': .5, 'center_y': .5}
-                        md_bg_color: [181/255, 209/255, 255/255]
-                        # changes the theme style of the app
-                        theme_text_color: "Custom"
-                        text_color: [22/255,26/255,31/255,1]
-                    MDIconButton:
-                        id: calculator_mode_button
-                        icon: "calculator"
-                        user_font_size: "40sp"
-                        size_hint: 1,1
-                        width: dp(48)  # set a fixed width of 48dp
-                        pos_hint: {'center_x': .5, 'center_y': .5}
-                        # changes the theme style of the app
-                        on_release: 
-                            app.sm.current = "Calculator"
-                        theme_text_color: "Custom"
-                        text_color: [181/255, 209/255, 255/255]
         MDLabel:
             text: ""
-
-                
+        
