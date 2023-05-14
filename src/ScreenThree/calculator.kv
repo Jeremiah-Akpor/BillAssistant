@@ -64,7 +64,7 @@
             MDLabel:
                 id: answer
                 size_hint_y:None
-                font_size:35
+                font_size:45
                 pos_hint: {'center_x': 0.5,'center_y': 1}
                 halign:'right'
                 bold:True
@@ -72,21 +72,22 @@
                 text_color: [181/255, 209/255, 255/255]
 
         MDFloatLayout:
-            MDGridLayout:
+            GridLayout:
                 spacing:3,5
                 cols: 4
                 rows: 5
-                pos_hint: {'center_x': 0.5,'center_y': 1.4}
+                pos_hint: {'center_x': 0.5,'center_y': 1}
+                size_hint: (1,1.5)
                 # Row 1
                 MDFillRoundFlatButton:
-                    size_hint: (.2,.2)
+                    size_hint: (1,1)
                     font_size: 32
                     text: "Ans"
                     on_press: root.other_sign("Ans")
                     
 
                 MDFillRoundFlatButton:
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "DEL"
                     on_press: root.backspace()
@@ -96,7 +97,7 @@
 
                 MDFillRoundFlatButton:
                     id: clear
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "C"
                     on_press: 
@@ -104,7 +105,7 @@
                     md_bg_color:[1,0,0,.4]
 
                 MDFillRoundFlatButton:
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "/"
                     on_press: root.math_sign("/")
@@ -114,7 +115,7 @@
                 # Row 2
                 CustomButton:
                     id: 7
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "7"
                     background_color: (157/255, 157/255, 157/255, 1)
@@ -122,7 +123,7 @@
 
                 CustomButton:
                     id: 8
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "8"
                     background_color: (157/255, 157/255, 157/255, 1)
@@ -131,14 +132,14 @@
 
                 CustomButton:
                     id: 9
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "9"
                     background_color: (157/255, 157/255, 157/255, 1)
                     on_press: root.button_press(9)
 
                 MDFillRoundFlatButton:
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "X"
                     on_press: root.math_sign("*")
@@ -147,7 +148,7 @@
                 # Row 3
                 CustomButton:
                     id: 4
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "4"
                     background_color: (157/255, 157/255, 157/255, 1)
@@ -155,7 +156,7 @@
 
                 CustomButton:
                     id: 5
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "5"
                     background_color: (157/255, 157/255, 157/255, 1)
@@ -163,14 +164,14 @@
 
                 CustomButton:
                     id: 6
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "6"
                     background_color: (157/255, 157/255, 157/255, 1)
                     on_press: root.button_press(6)
 
                 MDFillRoundFlatButton:
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "-"
                     on_press: root.math_sign("-")
@@ -180,7 +181,7 @@
                 # Row 4
                 CustomButton:
                     id: 1
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "1"
                     background_color: (157/255, 157/255, 157/255, 1)
@@ -188,7 +189,7 @@
 
                 CustomButton:
                     id: 2
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "2"
                     background_color: (157/255, 157/255, 157/255, 1)
@@ -197,14 +198,14 @@
 
                 CustomButton:
                     id: 3
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "3"
                     background_color: (157/255, 157/255, 157/255, 1)
                     on_press: root.button_press(3)
 
                 MDFillRoundFlatButton:
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "+"
                     on_press: root.math_sign("+")
@@ -212,7 +213,7 @@
 
                 # Row 5
                 CustomButton:
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "+/-"
                     background_color: (157/255, 157/255, 157/255, 1)
@@ -220,7 +221,7 @@
 
                 CustomButton:
                     id: 0
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "0"
                     background_color: (157/255, 157/255, 157/255, 1)
@@ -228,16 +229,21 @@
 
 
                 CustomButton:
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "."
                     background_color: (157/255, 157/255, 157/255, 1)
                     on_press: root.other_sign(".")
 
                 MDFillRoundFlatButton:
-                    size_hint: (.2,.2)
+                    size_hint: (1,2)
                     font_size: 32
                     text: "="
                     on_press: root.equals()
                     bold:True
-        
+            MDLabel:
+                text:""
+                pos_hint: {'center_x': 0.5,'center_y': 0}
+            MDLabel:
+                text:""
+                pos_hint: {'center_x': 0.5,'center_y': 0}
