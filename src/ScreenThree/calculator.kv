@@ -1,68 +1,243 @@
-
+<CustomButton@MDFillRoundFlatButton>
+    text: ""
+    font_size: "18sp"
+    size_hint: None,None
+    size: dp(20),dp(20)
+    md_bg_color: [22/255,26/255,31/255,1] if app.theme_cls.theme_style == 'Dark' else [181/255, 209/255, 255/255]
+    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+    theme_text_color: "Custom"
+    text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
 # this it the Bill mode screen
 <Calculator>:
-    md_bg_color: [35/255,43/255,50/255,1] if app.theme_cls.theme_style == 'Dark' else [181/255, 209/255, 255/255]
-    MDFloatLayout:
-        NavBar:
-            size_hint: .85, .1
-            pos_hint: {'center_x': .5, 'center_y':.1 }
-            elevation: 1
-            radius:[16]
-            md_bg_color: [22/255,26/255,31/255,1]
-            MDGridLayout:
-                cols: 2
-                size_hint:1,1
-                pos_hint: {'center_x': .5, 'center_y': .5}
-                md_bg_color: [22/255,26/255,31/255,1]
-                radius:[30]
+    md_bg_color: [35/255,43/255,50/255,1] 
 
-                MDIconButton:
-                    id: bill_mode_button
-                    icon: "currency-eur"
-                    ripple_scale: 0
-                    user_font_size: "40sp"
-                    size_hint: 1,1
-                    width: dp(48)  # set a fixed width of 48dp
-                    pos_hint: {'center_x': .5, 'center_y': .5}
-                    # changes the theme style of the app
-                    on_release: 
-                        app.sm.current = "BillMode"
-                    theme_text_color: "Custom"
-                    text_color: [181/255, 209/255, 255/255]
 
-                MDIconButton:
-                    id: calculator_mode_button
-                    icon: "calculator"
-                    ripple_scale: 0
-                    user_font_size: "40sp"
-                    size_hint: 1,1
-                    width: dp(48)  # set a fixed width of 48dp
-                    pos_hint: {'center_x': .5, 'center_y': .5}
-                    md_bg_color: [181/255, 209/255, 255/255]
-                    # changes the theme style of the app
-                    theme_text_color: "Custom"
-                    text_color: [22/255,26/255,31/255,1]
-
-    MDBoxLayout:
+    BoxLayout:
         orientation: 'vertical'
-        spacing: 8
-        MDIconButton:
-            icon: "theme-light-dark"
-            pos_hint: {'top': 1, 'right': 1}
-            size_hint: None, None
-            size: dp(48), dp(48)
-            # changes the theme style of the app
-            on_press: app.toggle_theme(True) if app.theme_cls.theme_style == 'Light' else app.toggle_theme(False)
-            theme_text_color: "Custom"
-            text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
+        MDFloatLayout:
+            MDIconButton:
+                icon: 'arrow-left'
+                on_release: app.sm.transition.direction = 'right'; app.sm.current = 'SelectMode'
+                size_hint: .1,None
+                pos_hint: {'center_y': .8}
+                user_font_size: "35p"
+                theme_text_color: 'Custom'
+                text_color: [181/255, 209/255, 255/255] 
+            MDLabel:
+                text: "Back"
+                font_size: "18sp"
+                size_hint: None,None
+                pos_hint: {'center_x': 0.15,'center_y': .8}
+                theme_text_color: "Custom"
+                text_color: [181/255, 209/255, 255/255]
 
-        MDLabel:
-            text: "Calculator"
-            font_name: "Roboto-BoldItalic"
-            font_size: "40sp"
-            pos_hint: {'center_x': 0.5,'center_y': 0.8}
-            halign: "center"
-            size_hint: 1,0.3
-            theme_text_color: "Custom"
-            text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
+            MDLabel:
+                text: "Calculator"
+                font_name: "Roboto-BoldItalic"
+                font_size: "20sp"
+                pos_hint: {'center_x': 0.5, 'center_y': .8}
+                halign: "center"
+                size_hint: 1,0.3
+                theme_text_color: "Custom"
+                text_color: [181/255, 209/255, 255/255]
+            MDIconButton:
+                icon: "theme-light-dark"
+                pos_hint: {'center_y': .8, 'right': 1}
+                size_hint: None,None
+                size: dp(48), dp(48)
+                # changes the theme style of the app
+                on_press: app.toggle_theme(True) if app.theme_cls.theme_style == 'Light' else app.toggle_theme(False)
+                theme_text_color: "Custom"
+                text_color: [181/255, 209/255, 255/255] 
+        MDFloatLayout:
+            MDTextField:
+                id: calc_input
+                text:""
+                halign: "right"
+                font_size: "45sp"
+                pos_hint: {'center_x': 0.5,'center_y': 1.5}
+                hint_text: "Solve :"
+                on_text_validate: root.equals()
+                size_hint_y:None
+                line_color_normal:[181/255, 209/255, 255/255]
+                hint_text_color: [181/255, 209/255, 255/255]
+            MDLabel:
+                id: answer
+                size_hint_y:None
+                font_size:35
+                pos_hint: {'center_x': 0.5,'center_y': 1}
+                halign:'right'
+                bold:True
+                theme_text_color: "Custom"
+                text_color: [181/255, 209/255, 255/255]
 
+        MDFloatLayout:
+            MDGridLayout:
+                spacing:3,5
+                cols: 4
+                rows: 5
+                pos_hint: {'center_x': 0.5,'center_y': 1.4}
+                # Row 1
+                MDFillRoundFlatButton:
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "Ans"
+                    on_press: root.other_sign("Ans")
+                    
+
+                MDFillRoundFlatButton:
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "DEL"
+                    on_press: root.backspace()
+                    md_bg_color:[1,0,0,.4]
+                    bold:True
+
+
+                MDFillRoundFlatButton:
+                    id: clear
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "C"
+                    on_press: 
+                        root.clear(), root.on_pre_enter()
+                    md_bg_color:[1,0,0,.4]
+
+                MDFillRoundFlatButton:
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "/"
+                    on_press: root.math_sign("/")
+                    bold:True
+
+
+                # Row 2
+                CustomButton:
+                    id: 7
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "7"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.button_press(7)
+
+                CustomButton:
+                    id: 8
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "8"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.button_press(8)
+
+
+                CustomButton:
+                    id: 9
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "9"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.button_press(9)
+
+                MDFillRoundFlatButton:
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "X"
+                    on_press: root.math_sign("*")
+                    bold:True
+
+                # Row 3
+                CustomButton:
+                    id: 4
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "4"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.button_press(4)
+
+                CustomButton:
+                    id: 5
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "5"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.button_press(5)
+
+                CustomButton:
+                    id: 6
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "6"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.button_press(6)
+
+                MDFillRoundFlatButton:
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "-"
+                    on_press: root.math_sign("-")
+                    bold:True
+
+
+                # Row 4
+                CustomButton:
+                    id: 1
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "1"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.button_press(1)
+
+                CustomButton:
+                    id: 2
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "2"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.button_press(2)
+
+
+                CustomButton:
+                    id: 3
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "3"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.button_press(3)
+
+                MDFillRoundFlatButton:
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "+"
+                    on_press: root.math_sign("+")
+                    bold:True
+
+                # Row 5
+                CustomButton:
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "+/-"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.other_sign("-")
+
+                CustomButton:
+                    id: 0
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "0"
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.button_press(0)
+
+
+                CustomButton:
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "."
+                    background_color: (157/255, 157/255, 157/255, 1)
+                    on_press: root.other_sign(".")
+
+                MDFillRoundFlatButton:
+                    size_hint: (.2,.2)
+                    font_size: 32
+                    text: "="
+                    on_press: root.equals()
+                    bold:True
+        
