@@ -5,7 +5,7 @@
 
 <Splash>:
     MDFloatLayout:
-        md_bg_color: [35/255,43/255,50/255,1]
+        md_bg_color: [35/255,43/255,50/255,1] if app.theme_cls.theme_style == 'Dark' else [181/255, 209/255, 255/255]
         MDCard:
             size_hint: None, None
             size: dp(250), dp(250)

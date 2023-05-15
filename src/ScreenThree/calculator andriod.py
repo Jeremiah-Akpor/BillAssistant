@@ -1,9 +1,10 @@
 """_summary_
 """
-import keyboard
-import win32api
-from kivy.core.window import Window
-from kivy.clock import Clock
+
+# import win32api
+# import keyboard
+# from kivy.core.window import Window
+# from kivy.clock import Clock
 from kivymd.uix.screen import MDScreen
 from apputils import load_kv
 
@@ -14,11 +15,11 @@ load_kv(__name__)
 class Calculator(MDScreen):
     current_screen_name = "None"
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        keyboard.on_press(self.on_key_press)
-        # Enable Num Lock if it's not already enabled
-        self.enable_num_lock()
+    # def __init__(self, **kwargs):
+    #     super().__init__(**kwargs)
+    #     keyboard.on_press(self.on_key_press)
+    #     # Enable Num Lock if it's not already enabled
+    #     self.enable_num_lock()
 
     @staticmethod
     def truncate_text(text, max_length=30):
@@ -141,37 +142,37 @@ class Calculator(MDScreen):
         else:
             self.ids.calc_input.text = f"{prior[:length-1]}"
 
-    def on_key_press(self, event):
-        if Window.focus and self.current_screen_name == "Calculator":
-            # Process the key press event
-            num_lock_keys = [str(i) for i in range(10)]
-            operators = [
-                "*",
-                "+",
-                "-",
-                "decimal",
-                "/",
-                "enter",
-                "backspace",
-            ]
+    # def on_key_press(self, event):
+    #     if Window.focus and self.current_screen_name == "Calculator":
+    #         # Process the key press event
+    #         num_lock_keys = [str(i) for i in range(10)]
+    #         operators = [
+    #             "*",
+    #             "+",
+    #             "-",
+    #             "decimal",
+    #             "/",
+    #             "enter",
+    #             "backspace",
+    #         ]
 
-            if event.name in num_lock_keys:
-                key = str(event.name)
-                Clock.schedule_once(lambda dt: self.button_press(key), 0)
+    #         if event.name in num_lock_keys:
+    #             key = str(event.name)
+    #             Clock.schedule_once(lambda dt: self.button_press(key), 0)
 
-            if event.name in operators:
-                key = str(event.name)
-                if key == "enter":
-                    Clock.schedule_once(lambda dt: self.equals(), 0)
-                elif key == "backspace":
-                    Clock.schedule_once(lambda dt: self.backspace(), 0)
-                elif key == "decimal":
-                    Clock.schedule_once(lambda dt: self.other_sign("."), 0)
-                else:
-                    Clock.schedule_once(lambda dt: self.math_sign(key), 0)
+    #         if event.name in operators:
+    #             key = str(event.name)
+    #             if key == "enter":
+    #                 Clock.schedule_once(lambda dt: self.equals(), 0)
+    #             elif key == "backspace":
+    #                 Clock.schedule_once(lambda dt: self.backspace(), 0)
+    #             elif key == "decimal":
+    #                 Clock.schedule_once(lambda dt: self.other_sign("."), 0)
+    #             else:
+    #                 Clock.schedule_once(lambda dt: self.math_sign(key), 0)
 
-    def enable_num_lock(self):  # pylint: disable=no-self-argument
-        if not (win32api.GetKeyState(0x90) & 1):
-            # Simulate pressing and releasing the Num Lock key
-            win32api.keybd_event(0x90, 0, 0, 0)
-            win32api.keybd_event(0x90, 0, 2, 0)
+    # def enable_num_lock(self):  # pylint: disable=no-self-argument
+    #    if not (win32api.GetKeyState(0x90) & 1):
+    #       # Simulate pressing and releasing the Num Lock key
+    #       win32api.keybd_event(0x90, 0, 0, 0)
+    #       win32api.keybd_event(0x90, 0, 2, 0)

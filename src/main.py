@@ -33,7 +33,7 @@ class MainApp(MDApp):
         self.title = "BillBuddy"
         self.icon = "images/icon.jpeg"
         self.sm.current = "Splash"
-        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "DeepOrange"
         self.theme_cls.accent_palette = "BlueGray"
         self.theme_cls.theme_style_switch_animation = True

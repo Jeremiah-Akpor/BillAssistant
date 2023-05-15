@@ -75,8 +75,8 @@ class Main(MDApp, App):
         self.sm = Factory.SM()
         self.title = "BillBuddy"
         self.icon = "images/icon.jpeg"
-        self.sm.current = "BillMode"
-        self.theme_cls.theme_style = "Dark"
+        self.sm.current = "Splash"
+        self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "DeepOrange"
         self.theme_cls.accent_palette = "BlueGray"
         self.theme_cls.theme_style_switch_animation = True
@@ -90,7 +90,7 @@ class Main(MDApp, App):
         Clock.schedule_once(self.welcome, 5)
 
     def welcome(self, *args):  # pylint: disable=unused-argument
-        self.sm.current = "BillMode"
+        self.sm.current = "Welcome"
 
     def toggle_theme(self, is_dark):
         """Toggle the app's theme.
