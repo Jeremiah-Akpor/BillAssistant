@@ -2,11 +2,12 @@
 This module contains the `SM` and `MainApp` classes for the BillBuddy app.
 """
 from kivy.clock import Clock
-from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.screen import MDScreen
 from kivymd.app import MDApp
 from kivymd.uix.textfield import MDTextField
+
+from ScreenThree.calculator import Calculator
 
 
 class SM(ScreenManager):
@@ -37,7 +38,6 @@ class MainApp(MDApp):
         self.theme_cls.accent_palette = "BlueGray"
         self.theme_cls.theme_style_switch_animation = True
         self.theme_cls.theme_style_switch_animation_duration = 0.95
-        Window.size = (431, 988)
         return self.sm
 
     def on_start(self):
@@ -77,6 +77,9 @@ class MainApp(MDApp):
     def clear_all(self, notes: list):
         for note in notes:
             note.text = ""
+
+    def current_screen_name(self, screen_name):
+        Calculator.current_screen_name = screen_name
 
 
 if __name__ == "__main__":

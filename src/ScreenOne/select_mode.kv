@@ -1,3 +1,4 @@
+#: import Calculator ScreenThree.calculator
 <ElementCard@MDCard>:
     md_bg_color:[22/255,26/255,31/255,1]
     orientation: "vertical"
@@ -39,6 +40,7 @@
             on_release: 
                 app.sm.transition.direction = 'left'
                 app.sm.current = 'BillMode'
+                app.current_screen_name('BillMode')
             pos_hint: {'center_x': 0.5, 'center_y': 0.7}
             size_hint: .5,.2
             Image:
@@ -58,6 +60,7 @@
             on_release: 
                 app.sm.transition.direction = 'left'
                 app.sm.current = 'Calculator'
+                app.current_screen_name('Calculator')
             size_hint: .5,.2
             Image:
                 source: "images/calc_trans_re.png"

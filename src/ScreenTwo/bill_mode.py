@@ -29,4 +29,5 @@ class NavBar(CommonElevationBehavior, MDFloatLayout):
 
 
 class BillMode(MDScreen):
-    pass
+    def on_pre_enter(self):  # pylint: disable=arguments-differ
+        self.ids.five_hundred_euro_Note.focus = True

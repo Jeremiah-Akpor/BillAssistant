@@ -6,7 +6,7 @@ from kaki.app import App
 from kivy.clock import Clock
 from kivy.factory import Factory
 
-from kivy.core.window import Window
+
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.app import MDApp
 from kivymd.uix.screen import MDScreen
@@ -17,6 +17,9 @@ from ScreenThree.calculator import Calculator
 
 class SM(ScreenManager):
     """A `ScreenManager` that manages the screens for the BillBuddy app."""
+
+    def current_screen_name(self):
+        return self.current_screen.name
 
 
 class Splash(MDScreen):
@@ -65,12 +68,14 @@ class Main(MDApp, App):
         (".", {"recursive": True}),
     ]
 
+    sm = None
+
     # build app
     def build_app(self):
         self.sm = Factory.SM()
         self.title = "BillBuddy"
         self.icon = "images/icon.jpeg"
-        self.sm.current = "Calculator"
+        self.sm.current = "BillMode"
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "DeepOrange"
         self.theme_cls.accent_palette = "BlueGray"
@@ -85,7 +90,7 @@ class Main(MDApp, App):
         Clock.schedule_once(self.welcome, 5)
 
     def welcome(self, *args):  # pylint: disable=unused-argument
-        self.sm.current = "Welcome"
+        self.sm.current = "BillMode"
 
     def toggle_theme(self, is_dark):
         """Toggle the app's theme.
@@ -114,6 +119,9 @@ class Main(MDApp, App):
     def total_sum(self, notes: list, total_label_id):
         total = sum(int(textfield.text) for textfield in notes)
         total_label_id.text = str(total)
+
+    def current_screen_name(self, screen_name):
+        Calculator.current_screen_name = screen_name
 
 
 # launch the app
