@@ -16,7 +16,7 @@ from ScreenThree.calculator import Calculator
 
 
 class SM(ScreenManager):
-    """A `ScreenManager` that manages the screens for the BillBuddy app."""
+    """A `ScreenManager` that manages the screens for the BillAssistant app."""
 
     def current_screen_name(self):
         return self.current_screen.name
@@ -73,7 +73,7 @@ class Main(MDApp, App):
     # build app
     def build_app(self):
         self.sm = Factory.SM()
-        self.title = "BillBuddy"
+        self.title = "BillAssistant"
         self.icon = "images/icon.jpeg"
         self.sm.current = "Splash"
         self.theme_cls.theme_style = "Light"

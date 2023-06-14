@@ -3,10 +3,10 @@
 # (str) Title of your application
 title = BillBuddy
 # (str) Package name
-package.name = billBuddy
+package.name = billAssitant
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.billBuddy
+package.domain = org.billAssitant
 
 # (str) Source code where the main.py live
 source.dir = .
