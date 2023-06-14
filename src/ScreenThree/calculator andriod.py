@@ -22,8 +22,7 @@ class Calculator(MDScreen):
     #     self.enable_num_lock()
 
     @staticmethod
-    def truncate_text(text, max_length=30):
-        text = text.replace(" ", "")
+    def truncate_text(text, max_length=20):
         if len(text) > max_length:
             return text[:max_length] + "..."
         return text
@@ -83,30 +82,22 @@ class Calculator(MDScreen):
                 self.ids.answer.text = "Invalid Input"
 
     def other_sign(self, sign):
-        """
-            add other signs like dot and negative to the
-            text input
-        Returns:
-            _type_: _description_
-        """
-        # get the number/s the is already in the TextInput
         prior = self.ids.calc_input.text
         if sign == "Ans" and self.ids.answer.text != "Invalid Input":
             self.ids.calc_input.text = self.ids.answer.text
-            self.ids.answer.text = ""
+            self.ids.answer.text = "0"
         elif sign == "Ans" and self.ids.answer.text == "Invalid Input":
-            self.ids.calc_input.text = ""
-            self.ids.answer.text = ""
+            self.ids.calc_input.text = "0"
+            self.ids.answer.text = "0"
         else:
-            if "." in prior.split(" ")[-1] and sign == ".":
+            last_character = prior.split()[-1]
+            if "." in last_character and sign == ".":
                 pass
-            elif prior[0] == "-" and sign == "-":
-                self.ids.calc_input.text = f"{prior[1:]}"
-            elif prior[0] != "-" and sign == "-":
-                self.ids.calc_input.text = f"{sign}{prior}"
+            elif sign == "-" and (last_character == ""
+                                  or last_character == "-"):
+                self.ids.calc_input.text += sign
             else:
-                # concat the Text box with the sign
-                self.ids.calc_input.text = f"{prior}{sign}"
+                self.ids.calc_input.text += sign
 
     # create equals to function
 
@@ -118,10 +109,10 @@ class Calculator(MDScreen):
             prior = self.ids.calc_input.text
             answer = eval(prior)  # pylint: disable=eval-used
             self.ids.calc_input.text = f"{prior} ="
-            # print answer in the text box
-            self.ids.answer.text = f"{answer}"
+            self.ids.answer.text = self.truncate_text(str(answer))
+        except ZeroDivisionError:
+            self.ids.answer.text = "Division by zero is not allowed"
         except (Exception, NameError):  # pylint: disable=broad-except
-            # print answer in the text box
             self.ids.answer.text = "Invalid Input"
 
     def backspace(self):

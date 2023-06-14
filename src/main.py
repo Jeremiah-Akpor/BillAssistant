@@ -1,5 +1,5 @@
 """
-This module contains the `SM` and `MainApp` classes for the BillAssitant app.
+This module contains the `SM` and `MainApp` classes for the BillAssistant app.
 """
 from kivy.clock import Clock
 from kivy.uix.screenmanager import ScreenManager
@@ -11,7 +11,7 @@ from ScreenThree.calculator import Calculator
 
 
 class SM(ScreenManager):
-    """A `ScreenManager` that manages the screens for the BillAssistantc app."""
+    """A `ScreenManager` that manages the screens for the BillAssistant app."""
 
 
 class Splash(MDScreen):
