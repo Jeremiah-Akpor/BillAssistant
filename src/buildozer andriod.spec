@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = BillBuddy
+title = BillAssistant
 # (str) Package name
 package.name = billAssitant
 
