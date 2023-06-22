@@ -9,11 +9,11 @@ BillAssistant is a simple money notes calculator built using the KivyMD framewor
 - Real-time calculation of total value
 
 ## Screenshots
-![Screenshot ](/src/images/screenshot.png)
+![Screenshot ](/src/images/Screenshot.png)
 ![Screenshot 1](/src/images/screenshot1.png)
 ![Screenshot 2](/src/images/screenshot2.png)
-![Screenshot 3](/src/images/screenshot3.png)
-![Screenshot 4](/src/images/screenshot4.png)
+![Screenshot 3](/src/images/Screenshot3.png)
+![Screenshot 4](/src/images/Screenshot4.png)
 
 ## Getting Started
 
