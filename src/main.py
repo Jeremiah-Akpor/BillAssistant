@@ -1,8 +1,12 @@
 """
 This module contains the `SM` and `MainApp` classes for the BillAssistant app.
 """
+import os
+import sys
+from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.uix.screenmanager import ScreenManager
+from kivy.resources import resource_add_path, resource_find
 from kivymd.uix.screen import MDScreen
 from kivymd.app import MDApp
 from kivymd.uix.textfield import MDTextField
@@ -29,6 +33,8 @@ class MainApp(MDApp):
         Returns:
             `SM`: The root `SM` object representing the app UI.
         """
+        # Set the desired window size
+        Window.size = (1000, 700)
         self.sm = SM()
         self.title = "BillAssistant"
         self.icon = "images/icon.jpeg"
@@ -83,5 +89,11 @@ class MainApp(MDApp):
 
 
 if __name__ == "__main__":
-    app = MainApp()
-    app.run()
+    try:
+        if hasattr(sys, "_MEIPASS"):
+            resource_add_path(os.path.join(sys._MEIPASS))
+        app = MainApp()
+        app.run()
+    except Exception as e:
+        print(e)
+        input("Press enter.")

@@ -1,25 +1,26 @@
-# BillBuddy
+# BillAssistant
 
-BillBuddy is a simple money notes calculator built using the KivyMD framework. With BillBuddy, you can easily calculate the total value of your banknotes by simply selecting the denominations of the notes you have.
+BillAssistant is a simple money notes calculator built using the KivyMD framework. With BillAssistant, you can easily calculate the total value of your banknotes by simply selecting the denominations of the notes you have.
 
 ## Features
 
 - User-friendly interface
 - Easy selection of note denominations
 - Real-time calculation of total value
-- Support for multiple currencies
 
 ## Screenshots
-
-![Screenshot 1](/screenshots/screenshot1.png)
-![Screenshot 2](/screenshots/screenshot2.png)
+![Screenshot ](/src/images/screenshot.png)
+![Screenshot 1](/src/images/screenshot1.png)
+![Screenshot 2](/src/images/screenshot2.png)
+![Screenshot 3](/src/images/screenshot3.png)
+![Screenshot 4](/src/images/screenshot4.png)
 
 ## Getting Started
 
 1. Clone the repository:
    
    ```
-   git clone https://github.com/Jeremiah-Akpor/BillBuddy.git
+   git clone https://github.com/Jeremiah-Akpor/BillAssistant.git
    ```
 
 2. Install the dependencies:
@@ -41,17 +42,16 @@ BillBuddy is a simple money notes calculator built using the KivyMD framework. W
 
 ## Contributing
 
-Contributions are always welcome! If you have any ideas or suggestions for improving BillBuddy, please feel free to open an issue or a pull request.
+Contributions are always welcome! If you have any ideas or suggestions for improving BillAssistant, please feel free to open an issue or a pull request.
 
 ## License
 
-BillBuddy is licensed under the MIT License. See [LICENSE](/LICENSE) for more information.
+BillAssistant is licensed under the MIT License. See [LICENSE](/LICENSE.txt) for more information.
 
 ## Acknowledgements
 
 - [KivyMD](https://github.com/kivymd/KivyMD) - Material Design for Kivy
-- [Icons8](https://icons8.com/) - Icons used in the app
 
 ## Contact
 
-If you have any questions or comments about BillBuddy, you can reach me at JeremiahAkpor_CS@outlook.com.
+If you have any questions or comments about BillAssistant, you can reach me at JeremiahAkpor_CS@outlook.com.

@@ -8,7 +8,7 @@ from kivymd.uix.screen import MDScreen
 from apputils import load_kv
 
 
-load_kv(__name__)
+load_kv("ScreenThree\calculator.kv")
 
 
 class Calculator(MDScreen):

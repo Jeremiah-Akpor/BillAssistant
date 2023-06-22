@@ -23,11 +23,21 @@
                 theme_text_color: 'Custom'
                 text_color: [181/255, 209/255, 255/255] if app.theme_cls.theme_style == 'Dark' else [22/255,26/255,31/255,1]
 
+            MDRaisedButton:
+                text: "Bill Mode"
+                halign: "center"
+                pos_hint: { 'center_x': 0.4,'center_y': 0.79}
+                md_bg_color: [22/255,26/255,31/255,1] 
+                theme_text_color: "Custom"
+                text_color: [181/255, 209/255, 255/255] 
+                size_hint: 0.1,None
+                on_release:
+                    app.sm.transition.direction = 'right'; app.sm.current = 'BillMode'
             MDLabel:
                 text: "Calculator"
                 font_name: "Roboto-BoldItalic"
                 font_size: "20sp"
-                pos_hint: {'center_x': 0.5, 'center_y': .8}
+                pos_hint: {'center_x': 0.55 , 'center_y': .8}
                 halign: "center"
                 size_hint: 1,0.3
                 theme_text_color: "Custom"
