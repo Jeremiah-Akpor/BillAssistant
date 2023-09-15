@@ -7,6 +7,7 @@ BillAssistant is a simple money notes calculator built using the KivyMD framewor
 - User-friendly interface
 - Easy selection of note denominations
 - Real-time calculation of total value
+- It Only works for windows 64 bit
 
 ## Screenshots
 ![Screenshot ](/src/images/Screenshot.png)
