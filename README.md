@@ -45,9 +45,6 @@ BillAssistant is a simple money notes calculator built using the KivyMD framewor
 
 Contributions are always welcome! If you have any ideas or suggestions for improving BillAssistant, please feel free to open an issue or a pull request.
 
-## License
-
-BillAssistant is licensed under the MIT License. See [LICENSE](/LICENSE.txt) for more information.
 
 ## Acknowledgements
 
